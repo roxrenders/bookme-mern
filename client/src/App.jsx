@@ -1,6 +1,6 @@
 
-import {Routes, Route} from 'react-router-dom'
 import axios from 'axios';
+import {Routes, Route} from 'react-router-dom'
 
 
 import IndexPage from './pages/IndexPage'
@@ -14,6 +14,7 @@ import PlacePage from './pages/PlacePage';
 import BookingPage from './pages/BookingPage';
 import BookingsPage from './pages/BookingsPage';
 import { UserContextProvider } from './userContext';
+
 
 
 
