@@ -10,7 +10,7 @@ export const PhotosUploader = ({ addedPhotos, onChange }) => {
       link: photoLink,
     });
 
-    const relativeImageUrl = imageUrl.replace("http://localhost:4000", "");
+    const relativeImageUrl = imageUrl.replace("https://airbnb-clone-mern-server.vercel.app", "");
     onChange((prev) => [...prev, relativeImageUrl]);
     setPhotoLink("");
     console.log("Photos added by link:", addedPhotos);
@@ -31,7 +31,7 @@ export const PhotosUploader = ({ addedPhotos, onChange }) => {
         console.log(response.data);
 
         const relativeImageUrls = filenames.map((filename) =>
-          filename.replace("http://localhost:4000", "")
+          filename.replace("https://airbnb-clone-mern-server.vercel.app", "")
         );
 
         onChange([...addedPhotos, ...relativeImageUrls]);
@@ -73,7 +73,7 @@ export const PhotosUploader = ({ addedPhotos, onChange }) => {
               <div className="flex relative" key={link}>
                 <img
                   className="rounded-2xl h-30 w-40 object-cover"
-                  src={`http://localhost:4000/uploads/${link}`}
+                  src={`https://airbnb-clone-mern-server.vercel.app/uploads/${link}`}
                   alt={`Uploaded ${link}`}
                 />
                 <button onClick={ev => removePhoto(ev,link)} className="cursor-pointer absolute bottom-1 right-1 text-white bg-black bg-opacity-50 rounded-2xl py-2 px-3">

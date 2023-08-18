@@ -2,7 +2,6 @@
 import axios from "/@modules/axios";
 import {Routes, Route} from 'react-router-dom'
 
-
 import IndexPage from './pages/IndexPage'
 import LoginPage from './pages/LoginPage'
 import Layout from './Layout'

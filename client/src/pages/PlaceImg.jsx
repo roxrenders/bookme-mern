@@ -11,7 +11,7 @@ const PlaceImg = ({place, index=0, className=null}) => {
     return (
         <div className="flex bg-white h-32 w-32">
               {place.photos.length > 0 && (
-               <img className="object-cover" src={'http://localhost:4000/uploads/' + place.photos[index]} alt="" />
+               <img className="object-cover" src={'https://airbnb-clone-mern-server.vercel.app/uploads/' + place.photos[index]} alt="" />
               )}
           </div>
     )
