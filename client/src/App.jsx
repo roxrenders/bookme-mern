@@ -1,5 +1,5 @@
 
-import axios from 'axios';
+import axios from "/@modules/axios";
 import {Routes, Route} from 'react-router-dom'
 
 
