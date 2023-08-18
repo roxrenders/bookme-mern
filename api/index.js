@@ -28,8 +28,8 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use(cors({
     credentials: true,
     origin: 'http://localhost:5173',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Add other methods if needed
-    allowedHeaders: ['Content-Type', 'Authorization', 'token'], // Add other headers if needed
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+    allowedHeaders: ['Content-Type', 'Authorization', 'token'],
 }));
 
 console.log(process.env.MONGO_URL)
