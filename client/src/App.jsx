@@ -1,5 +1,5 @@
 
-import {Routes, Route, useParams, Navigate} from 'react-router-dom'
+import {Routes, Route} from 'react-router-dom'
 import axios from 'axios';
 
 
@@ -17,7 +17,9 @@ import BookingsPage from './pages/BookingsPage';
 
 
 
-axios.defaults.baseURL = 'http://localhost:4000';
+axios.defaults.baseURL = process.env.NODE_ENV === 'production'
+? 'https://airbnb-clone-mern-server.vercel.app/' 
+: 'http://localhost:4000';
 axios.defaults.withCredentials = true;
 
 function App() {
