@@ -1,5 +1,4 @@
-
-import axios from "/@modules/axios";
+import axios from 'axios';
 import {Routes, Route} from 'react-router-dom'
 
 import IndexPage from './pages/IndexPage'
