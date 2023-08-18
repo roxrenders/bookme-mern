@@ -27,13 +27,15 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
 
 app.use(cors({
     credentials: true,
-    origin: 'http://localhost:5173',
+    origin: 'https://your-frontend-domain.vercel.app', // Update with your actual frontend domain
     methods: ['GET', 'POST', 'PUT', 'DELETE'], 
     allowedHeaders: ['Content-Type', 'Authorization', 'token'],
 }));
 
+
 console.log(process.env.MONGO_URL)
-mongoose.connect(process.env.MONGO_URL);
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
+
 
 function getUserDataFromReq(req) {
     return new Promise((resolve, reject) => {
