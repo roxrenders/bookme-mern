@@ -24,16 +24,25 @@ const BookingWidget = ({place}) => {
         numberOfNights = differenceInCalendarDays(new Date(checkOut), new Date(checkIn));
     };
 
-    async function bookThisPlace(){
-      const response = await axios.post('/bookings', {
-      checkIn, checkOut, numberOfGuests,
-      name, phone,
-      place:place._id,
-      price:numberOfNights * place.price, 
-    }); 
-    const bookingId = response.data._id;
-    setRedirect(`/account/bookings/${bookingId}`)
+    async function bookThisPlace() {
+      try {
+        const response = await axios.post('/bookings', {
+          checkIn,checkOut,numberOfGuests,
+          name,phone,place: place._id,
+          price: numberOfNights * place.price,
+        }, {
+          withCredentials: true, // Added this line to send credentials
+        });
+    
+        const bookingId = response.data._id;
+        setRedirect(`/account/bookings/${bookingId}`);
+      } catch (error) {
+        console.error('Error booking the place:', error);
+        // Handle error as needed
+      }
     }
+    
+
 
     if(redirect){
       return <Navigate to={redirect}/>
