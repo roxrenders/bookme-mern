@@ -246,8 +246,13 @@ app.get('/places', async (req,res) => {
         res.json(placeDoc);
 
     } catch (err) {
-        console.error("Error in /bookings route:", err);
-        res.status(500).json({ error: 'An error occurred during booking' });
+        if (err.name === 'ValidationError') {
+            console.error("Validation error in /bookings route:", err);
+            res.status(400).json({ error: 'Validation error', errorMessage: err.message });
+        } else {
+            console.error("Error in /bookings route:", err);
+            res.status(500).json({ error: 'An error occurred during booking' });
+        }
     }
 });
 
