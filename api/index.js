@@ -32,8 +32,6 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization', 'token'],
 }));
 
-app.use('/users', cors());
-app.use('/bookings', cors());
 
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
