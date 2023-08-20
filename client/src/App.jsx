@@ -14,10 +14,6 @@ import BookingsPage from './pages/BookingsPage';
 import { UserContextProvider } from './userContext';
 
 
-axios.defaults.baseURL = import.meta.env.VITE_BACKEND_API_URL;
-axios.defaults.withCredentials = true;
-
-
 function App() {
   
   return (
@@ -40,6 +36,9 @@ function App() {
       </UserContextProvider>
   )
 }
+
+axios.defaults.baseURL = import.meta.env.VITE_BACKEND_API_URL;
+axios.defaults.withCredentials = true;
 
 export default App
 

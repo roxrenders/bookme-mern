@@ -19,7 +19,7 @@ const app = express();
 
 
 const bcryptSalt = bcrypt.genSaltSync(10);
-const jwtSecret = 'fasterdsddaw3434asda4'
+const jwtSecret = process.env.JWT_SECRET;
 
 app.use(express.json());
 app.use(cookieParser());
@@ -33,7 +33,7 @@ app.use(cors({
 }));
 
 
-console.log(process.env.MONGO_URL)
+
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
@@ -256,7 +256,7 @@ app.get('/bookings',async (req,res)=>{
     res.json(await Booking.find({user:userData.id}).populate('place'))
 })
 
-// LLqPUrMQ7mSHc83r
+
 
 app.listen(4000, () => {
     console.log('Express server is running on port 4000');

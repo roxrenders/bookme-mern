@@ -22,3 +22,38 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Environment-specific files
+.env
+.env.local
+.env.*.local
+.env.*.production
+
+# Build output
+build
+out
+
+# Temporary files
+.tmp
+*.tmp
+
+# Compiled output
+*.rbc
+*.sass-cache
+
+# Dependency directories
+jspm_packages/
+node_modules/
+bower_components/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# .env.local override
+!.env.local.example
