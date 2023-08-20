@@ -3,6 +3,7 @@ import { Link, Navigate } from 'react-router-dom'
 import axios from "axios";
 import { UserContext } from "../userContext";
 
+
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -39,7 +40,7 @@ try {
   return (
     <div className='mt-4 grow flex items-center justify-around'>
       <div className='mb-40'>
-        <h1 className='text-4xl text-center mb-4'>Login</h1>
+        <h1 className='text-4xl text-center mb-4'>LogIn</h1>
         <form className='max-w-md mx-auto' onSubmit={handleLoginSubmit}>
           <input
             type="email"
