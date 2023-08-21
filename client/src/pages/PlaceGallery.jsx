@@ -25,7 +25,7 @@ const PlaceGallery = ({place}) => {
                   <div key={photo} className="flex justify-center  items-center">
                     <img
                       className="max-w-full h-auto"
-                      src={"https://bookme-clone-mern-server.vercel.app/uploads/" + photo}
+                      src={"https://airbnb-clone-mern-server.vercel.app/uploads/" + photo}
                       alt=""
                     />
                   </div>
@@ -39,18 +39,18 @@ const PlaceGallery = ({place}) => {
     <div className="grid gap-1 sm:gap-2  grid-cols-[2fr_1fr] rounded-2xl overflow-hidden   ">
         <div>
           {place.photos?.[0] && (
-            <img onClick={()=>setShowAllPhotos(true)} className='aspect-square object-cover shadow-lg shadow-black ' src={"https://bookme-clone-mern-server.vercel.app/uploads/" + place?.photos[0]} alt="" />
+            <img onClick={()=>setShowAllPhotos(true)} className='aspect-square object-cover shadow-lg shadow-black ' src={"https://airbnb-clone-mern-server.vercel.app/uploads/" + place?.photos[0]} alt="" />
           )}
         </div>
         <div className='grid '>
           <div >
           {place.photos?.[1] && (
-            <img onClick={()=>setShowAllPhotos(true)} className='aspect-square object-cover shadow-lg shadow-black' src={"https://bookme-clone-mern-server.vercel.app/uploads/" + place.photos[1]} alt="" />
+            <img onClick={()=>setShowAllPhotos(true)} className='aspect-square object-cover shadow-lg shadow-black' src={"https://airbnb-clone-mern-server.vercel.app/uploads/" + place.photos[1]} alt="" />
           )}
           </div>
           <div className=' overflow-hidden'>
           {place.photos?.[2] && (
-            <img onClick={()=>setShowAllPhotos(true)} className='aspect-square object-cover relative top-1 sm:top-2 shadow-lg shadow-black' src={"https://bookme-clone-mern-server.vercel.app/uploads/" + place.photos[2]} alt="" />
+            <img onClick={()=>setShowAllPhotos(true)} className='aspect-square object-cover relative top-1 sm:top-2 shadow-lg shadow-black' src={"https://airbnb-clone-mern-server.vercel.app/uploads/" + place.photos[2]} alt="" />
           )}
           </div>
         </div>
