@@ -15,7 +15,10 @@ import { UserContextProvider } from './userContext';
 
 
 function App() {
-  
+
+  axios.defaults.baseURL = import.meta.env.VITE_BACKEND_API_URL;
+  axios.defaults.withCredentials = true;
+
   return (
     <UserContextProvider>
       <Routes>
@@ -37,8 +40,7 @@ function App() {
   )
 }
 
-axios.defaults.baseURL = import.meta.env.VITE_BACKEND_API_URL;
-axios.defaults.withCredentials = true;
+
 
 export default App
 
