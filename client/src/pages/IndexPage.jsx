@@ -16,7 +16,7 @@ const [places, setPlace] = useState([]);
       <Link to={'/place/' + place._id} key={place._id}>
       <div className="bg-gray-500 mb-2 rounded-2xl flex">
           {place.photos.length > 0 && (
-           <img className="rounded-2xl object-cover aspect-square" src={'https://airbnb-clone-mern-server.vercel.app/uploads/' + place?.photos?.[0]} alt="" />
+           <img className="rounded-2xl object-cover aspect-square" src={'https://bookme-clone-mern-server.vercel.app/uploads/' + place?.photos?.[0]} alt="" />
           )}
       </div>
       <h2 className="font-semibold sm:font-bold">{place.title}</h2>
