@@ -4,7 +4,7 @@
   "scripts": {
     "start": "node server.js", 
     "vercel-build": "npm install && npm run build", 
-    "build": "your-build-command-here" 
+    "build": "npm run build" 
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
