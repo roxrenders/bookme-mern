@@ -150,6 +150,7 @@ app.post('/upload-by-link', async (req, res) => {
     });
 
     const imageUrl = `https://airbnb-clone-mern-server.vercel.app/uploads/${newName}`;
+    res.json({ imageUrl }); 
 });
 
 const photoMiddleware = multer({ dest: __dirname + '/uploads/' });
