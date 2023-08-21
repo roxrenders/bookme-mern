@@ -26,7 +26,7 @@ app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
 app.use(cors({
-    credentials: true,
+    
     origin: 'https://airbnb-clone-mern-f.vercel.app', 
     methods: ['GET', 'POST', 'PUT', 'DELETE'], 
     allowedHeaders: ['Content-Type', 'Authorization', 'token'],
@@ -149,7 +149,7 @@ app.post('/upload-by-link', async (req, res) => {
         dest: outputPath,
     });
 
-    const imageUrl = `https://airbnb-clone-mern-f.vercel.app/uploads/${newName}`;
+    const imageUrl = `https://airbnb-clone-mern-server.vercel.app/uploads/${newName}`;
     res.json({ imageUrl }); 
 });
 
