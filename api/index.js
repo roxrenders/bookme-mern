@@ -78,18 +78,16 @@ app.post('/register', async(req, res) => {
 
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
-    
+
     try {
         const userDoc = await User.findOne({ email });
         if (!userDoc) {
             return res.status(404).json({ error: 'User not found' });
         }
-
         const passOk = bcrypt.compareSync(password, userDoc.password);
         if (!passOk) {
             return res.status(401).json({ error: 'Incorrect password' });
         }
-
         jwt.sign(
             {
                 email: userDoc.email,
@@ -102,6 +100,7 @@ app.post('/login', async (req, res) => {
                     console.error("Error signing JWT:", err);
                     return res.status(500).json({ error: 'Error occurred during login' });
                 }
+                console.log("Token generated:", token);
                 res.cookie('token', token).json(userDoc);
             }
         );
