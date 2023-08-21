@@ -9,11 +9,19 @@
 
   function BookingsPage() {
     const [bookings,setBookings] = useState([]);
-    useEffect (() => {
-      axios.get('/bookings').then(response => {
-        setBookings(response.data);
-      });
+    useEffect(() => {
+      axios.get('https://airbnb-clone-mern-server.vercel.app/bookings', {
+        withCredentials: true
+      })
+        .then(response => {
+          console.log('Response:', response.data);
+          setBookings(response.data);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
     }, []);
+    
     
     return (
       <div>
