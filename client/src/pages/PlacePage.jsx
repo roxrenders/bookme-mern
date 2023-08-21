@@ -13,6 +13,7 @@ const PlacePage = () => {
     useEffect(() => {
     if (!id) {
       return;
+
     }
     axios.get(`/places/${id}`).then(response => {
       setPlace(response.data);
