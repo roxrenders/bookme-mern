@@ -139,7 +139,7 @@ app.post('/upload-by-link', async (req, res) => {
         dest: outputPath,
     });
 
-    const imageUrl = `http://localhost:4000/${newName}`;
+    const imageUrl = `https://bookme-clone-mern-server.vercel.app/${newName}`;
     res.json(imageUrl);
 });
 
