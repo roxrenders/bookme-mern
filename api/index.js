@@ -34,7 +34,14 @@ app.use(cors({
 
 
 
-mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+        console.log("Connected to MongoDB");
+    })
+    .catch((error) => {
+        console.error("Error connecting to MongoDB:", error);
+    });
+
 
 
 function getUserDataFromReq(req) {
@@ -80,12 +87,15 @@ app.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
     try {
+        console.log("Finding user with email:", email);
         const userDoc = await User.findOne({ email });
+        console.log("Found user:", userDoc);
         if (!userDoc) {
             return res.status(404).json({ error: 'User not found' });
         }
         const passOk = bcrypt.compareSync(password, userDoc.password);
         if (!passOk) {
+            console.log("Incorrect password.");
             return res.status(401).json({ error: 'Incorrect password' });
         }
         jwt.sign(
