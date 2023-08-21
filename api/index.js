@@ -139,7 +139,7 @@ app.post('/upload-by-link', async (req, res) => {
         dest: outputPath,
     });
 
-    const imageUrl = `https://bookme-clone-mern-server.vercel.app/places/${newName}`;
+    const imageUrl = `https://bookme-clone-mern-server.vercel.app/uploads/${newName}`;
 });
 
 const photoMiddleware = multer({ dest: __dirname + '/uploads/' });
