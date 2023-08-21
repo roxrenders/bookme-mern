@@ -27,7 +27,7 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
 
 app.use(cors({
     credentials: true,
-    origin: 'https://airbnb-clone-mern-f.vercel.app', 
+    origin: 'https://airbnb-clone-mern-f.vercel.app/', 
     methods: ['GET', 'POST', 'PUT', 'DELETE'], 
     allowedHeaders: ['Content-Type', 'Authorization', 'token'],
 }));
@@ -59,7 +59,7 @@ function getUserDataFromReq(req) {
 }
     
 
-app.get('/test', (req,res)=>{
+app.get('/', (req,res)=>{
     res.json('test ok');
 });
 
@@ -265,8 +265,6 @@ app.get('/bookings',async (req,res)=>{
     const userData = await getUserDataFromReq(req);
     res.json(await Booking.find({user:userData.id}).populate('place'))
 })
-
-
 
 app.listen(4000, () => {
     console.log('Express server is running on port 4000');
