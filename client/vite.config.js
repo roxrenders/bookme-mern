@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     rollupOptions: {
-      external: ['/axios'], // Change this line
+      external: ['/axios'], // Adjust this line if needed
     },
   },
 });
