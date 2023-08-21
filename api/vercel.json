@@ -8,11 +8,11 @@
   ],
   "routes": [
     {
-      "src": "/(.*\\.(js|json|css|png|jpg|jpeg|gif|ico|woff|woff2|ttf|svg))",
+      "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|ico|woff|woff2|ttf|svg))",
       "dest": "/$1"
     },
     {
-      "src": ".*",
+      "src": "/.*",
       "dest": "/index.js"
     }
   ]
