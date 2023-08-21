@@ -30,7 +30,7 @@
           {bookings?.length > 0 && bookings.map(booking =>(
             <Link to={`/account/bookings/${booking._id}` } key={booking._id} className='flex gap-4 my-2 overflow-hidden object-fill bg-gray-200 rounded-2xl'>
               <div className='object-cover'>
-              <PlaceImg place={booking.place} />
+              <PlaceImg place={booking.place} />  
               </div>
            
              <div className='py-3 '>
