@@ -116,8 +116,9 @@ app.post('/login', async (req, res) => {
         );
     } catch (error) {
         console.error("Login error:", error);
-        res.status(500).json({ error: 'Error occurred during login' });
+        res.status(500).json({ error: 'Error occurred during login', detailedError: error.message });
     }
+    
 });
 
 
