@@ -1,5 +1,6 @@
 
 const express = require('express');
+const cors = require('cors');
 const bcrypt = require('bcryptjs'); 
 const jwt = require('jsonwebtoken');
 const User = require('./models/user');
@@ -28,20 +29,12 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
 
 
 // Your code
-if (process.env.NODE_ENV === "production") {
-    const path = require("path");
-    app.use(express.static(path.resolve(__dirname, 'client', 'build')));
-    app.get("*", (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'),function (err) {
-            if(err) {
-                res.status(500).send(err)
-            }
-        });
-    })
-}
-// Your code
-
-
+app.use(cors({
+    origin: 'https://airbnb-clone-mern-f.vercel.app',
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Add OPTIONS method
+    allowedHeaders: ['Content-Type', 'Authorization', 'token'],
+}));
 
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
