@@ -25,6 +25,7 @@ try {
         Cookies.set('token', userInfo.data.token, { expires: 7 });
         alert("Login successful.");
         setRedirect(true);
+        
   } else {
         alert(userInfo.data.error || "Login Failed.");
   }
