@@ -1,5 +1,4 @@
 const express = require('express');
-const cors = require('cors');
 const bcrypt = require('bcryptjs'); 
 const jwt = require('jsonwebtoken');
 const User = require('./models/user');
@@ -26,13 +25,13 @@ app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*'); // Allow all origins (not secure for production)
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, token');
+    next();
+});
 
-app.use(cors({
-    credentials: true,
-    origin: "https://airbnb-clone-mern-main.vercel.app", 
-    methods: ["POST", "GET"],
-    allowedHeaders: ['Content-Type', 'Authorization', 'token'],
-}));
 
 
 
