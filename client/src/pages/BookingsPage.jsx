@@ -15,8 +15,10 @@
     useEffect(() => {
       axios.get('/bookings', {
         withCredentials: true,
+        method:"GET",
         headers: {
-          Authorization: `Bearer ${token}`, // Include the token in the headers
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`, // Include the token in the headers
         },
       })
         .then(response => {
