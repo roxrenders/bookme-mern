@@ -29,17 +29,12 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use(cors({
     origin: 'https://airbnb-clone-mern-f.vercel.app', 
     credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE','OPTIONS'], 
-    allowedHeaders: ['Content-Type', 'Authorization', 'token', ],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
+    allowedHeaders: ['Content-Type', 'Authorization', 'token'],
 }));
 
-app.use('/bookings', (req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'https://airbnb-clone-mern-f.vercel.app');
-    res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.header('Access-Control-Allow-Credentials', 'true');
-    next();
-  });
+
+
 
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
