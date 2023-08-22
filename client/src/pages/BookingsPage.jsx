@@ -13,7 +13,7 @@
     const token = Cookies.get('token');
 
     useEffect(() => {
-      axios.get('/bookings')
+      axios.get('https://airbnb-clone-mern-server.vercel.app/bookings')
         .then(response => {
           console.log('Response:', response.data);
           setBookings(response.data);
