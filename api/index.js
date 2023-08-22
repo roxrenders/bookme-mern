@@ -1,3 +1,4 @@
+const cors = require('cors');
 const express = require('express');
 const bcrypt = require('bcryptjs'); 
 const jwt = require('jsonwebtoken');
@@ -29,7 +30,7 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use(cors({
     credentials: true,
     origin: "https://airbnb-clone-mern-main.vercel.app", 
-    methods: ["POST", "GET"],
+    methods: ['GET','POST','DELETE','UPDATE','PUT'],
     allowedHeaders: ['Content-Type', 'Authorization', 'token'],
 }));
 
@@ -260,7 +261,7 @@ app.post('/bookings', async (req, res) => {
     }
 });
 
-app.get('/bookings',async (req,res)=>{ 
+app.get('/bookings',cors(), async (req,res)=>{ 
     const userData = await getUserDataFromReq(req);
     res.json(await Booking.find({user:userData.id}).populate('place'))
 })
