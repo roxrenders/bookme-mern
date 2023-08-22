@@ -1,4 +1,3 @@
-
 const express = require('express');
 const cors = require('cors');
 const bcrypt = require('bcryptjs'); 
@@ -19,7 +18,6 @@ const PORT=process.env.PORT || 4000
 require('dotenv').config() 
 const app = express();
 
-
 const bcryptSalt = bcrypt.genSaltSync(10);
 const jwtSecret = process.env.JWT_SECRET;
 
@@ -30,9 +28,9 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
 
 // Your code
 app.use(cors({
-    origin: 'https://airbnb-clone-mern-main.vercel.app',
     credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Add OPTIONS method
+    origin: 'https://airbnb-clone-mern-main.vercel.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'token'],
 }));
 
