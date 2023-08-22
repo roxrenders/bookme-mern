@@ -16,13 +16,19 @@
           "Authorization": `Bearer ${token}`
         }
       })
-        .then(response => {
-          console.log('Response:', response.data);
-          setBookings(response.data);
-        })
-        .catch(error => {
-          console.error('Error:', error);
-        });
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json(); // Convert response to JSON
+      })
+      .then(data => {
+        console.log('Data:', data);
+        setBookings(data);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
     }, [token]);
     
     
