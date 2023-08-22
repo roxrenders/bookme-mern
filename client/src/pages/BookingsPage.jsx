@@ -6,8 +6,6 @@
   import { Link } from 'react-router-dom';
   import Cookies from 'js-cookie';
 
-
-
   function BookingsPage() {
     const [bookings,setBookings] = useState([]);
     const token = Cookies.get('token');
