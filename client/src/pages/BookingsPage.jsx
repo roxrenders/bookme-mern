@@ -13,14 +13,7 @@
     const token = Cookies.get('token');
 
     useEffect(() => {
-      axios.get('/bookings', {
-        withCredentials: true,
-        method:"GET",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`, // Include the token in the headers
-        },
-      })
+      axios.get('/bookings')
         .then(response => {
           console.log('Response:', response.data);
           setBookings(response.data);
