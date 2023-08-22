@@ -27,7 +27,7 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
 
 
 app.use(cors({
-    origin: "*", 
+    origin: "https://airbnb-clone-mern-main.vercel.app", 
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
     allowedHeaders: ['Content-Type', 'Authorization', 'token'],
