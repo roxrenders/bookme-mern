@@ -4,14 +4,20 @@
   import PlaceImg from './PlaceImg';
   import { differenceInCalendarDays, format } from 'date-fns';
   import { Link } from 'react-router-dom';
+  import Cookies from 'js-cookie';
 
 
 
   function BookingsPage() {
     const [bookings,setBookings] = useState([]);
+    const token = Cookies.get('token');
+
     useEffect(() => {
       axios.get('https://airbnb-clone-mern-server.vercel.app/bookings', {
-        withCredentials: true
+        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`, // Include the token in the headers
+        },
       })
         .then(response => {
           console.log('Response:', response.data);
@@ -20,7 +26,7 @@
         .catch(error => {
           console.error('Error:', error);
         });
-    }, []);
+    }, [token]);
     
     
     return (

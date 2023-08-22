@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link, Navigate } from 'react-router-dom'
 import axios from "axios";
 import { UserContext } from "../userContext";
+import Cookies from 'js-cookie';
 
 
 const LoginPage = () => {
@@ -14,7 +15,6 @@ const LoginPage = () => {
   async function handleLoginSubmit(ev) {
     ev.preventDefault();
 
-    // ...
 try {
       const userInfo = await axios.post("/login", {
        email,
@@ -22,6 +22,7 @@ try {
   }); 
       if (userInfo.data && !userInfo.data.error) {
         setUser(userInfo.data);
+        Cookies.set('token', userInfo.data.token, { expires: 7 });
         alert("Login successful.");
         setRedirect(true);
   } else {
