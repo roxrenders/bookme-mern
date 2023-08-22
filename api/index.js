@@ -261,12 +261,14 @@ app.post('/bookings', async (req, res) => {
     }
 });
 
-app.get('/bookings',async (req,res)=>{ 
-    const userData = await getUserDataFromReq(req);
-    res.json(await Booking.find({user:userData.id}).populate('place'))
-})
-
-app.listen(4000, () => {
-    console.log('Express server is running on port 4000');
+app.get('/bookings', async (req, res) => {
+    try {
+        const userData = await getUserDataFromReq(req);
+        res.json(await Booking.find({ user: userData.id }).populate('place'));
+    } catch (err) {
+        console.error("Error in /bookings route:", err);
+        res.status(500).json({ error: 'An error occurred during booking' });
+    }
 });
+
 
