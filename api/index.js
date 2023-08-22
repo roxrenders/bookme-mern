@@ -33,7 +33,6 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization', 'token'],
 }));
 
-app.options('*', cors());
 
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
