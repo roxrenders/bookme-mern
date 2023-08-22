@@ -29,10 +29,11 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
 
 app.use(cors({
     credentials: true,
-    origin:["https://airbnb-clone-mern-main.vercel.app"],
-    methods:["POST", "GET","OPTIONS"],
+    origin: "https://airbnb-clone-mern-main.vercel.app", 
+    methods: ["POST", "GET"],
     allowedHeaders: ['Content-Type', 'Authorization', 'token'],
 }));
+
 
 
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
