@@ -10,9 +10,9 @@
     const [bookings,setBookings] = useState([]);
     const token = Cookies.get('token');
 
-    useEffect(() => {
-      axios.get('https://airbnb-clone-mern-server.vercel.app/bookings',{
-        headers:{
+    useEffect(() =>  {
+      fetch('https://airbnb-clone-mern-server.vercel.app/bookings', {
+        headers: {
           "Authorization": `Bearer ${token}`
         }
       })
