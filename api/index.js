@@ -234,7 +234,7 @@ app.get('/places', async (req,res) => {
     res.json( await Place.find() );
   });
 
-app.post('/bookings', async (req, res) => {
+app.post('/account/bookings', async (req, res) => {
     try {
         const userData = await getUserDataFromReq(req);
         
