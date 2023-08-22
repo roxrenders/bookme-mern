@@ -42,8 +42,6 @@ mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopol
         console.error("Error connecting to MongoDB:", error);
     });
 
-
-
 function getUserDataFromReq(req) {
     return new Promise((resolve, reject) => {
         jwt.verify(req.cookies.token, jwtSecret, {}, async (err, userData) => {
