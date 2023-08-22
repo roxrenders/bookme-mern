@@ -25,9 +25,6 @@ app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST,GET,OPTIONS,PUT,DELETE');
-header('Access-Control-Allow-Headers: Content-Type, X-Auth-Token, Origin, Authentication');
 
 app.use(cors({
     origin: 'https://airbnb-clone-mern-f.vercel.app', 
@@ -36,7 +33,7 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization', 'token'],
 }));
 
-
+app.options('*', cors());
 
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
