@@ -4,20 +4,3 @@ node_modules/
 # Environment variables
 .env
 
-# Compiled files
-dist/
-build/
-
-# Logs
-logs/
-
-# macOS
-.DS_Store
-
-# IDE-specific files
-.vscode/
-.idea/
-*.iml
-
-# Configuration files
-config.json

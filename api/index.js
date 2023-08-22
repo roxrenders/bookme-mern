@@ -13,6 +13,7 @@ const Booking = require('./models/Booking.js');
 const { userInfo } = require('os');
 const { resolve } = require('path');
 const { rejects } = require('assert');
+const PORT=process.env.PORT || 4000
 
 require('dotenv').config() 
 const app = express();
@@ -28,8 +29,9 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
 
 app.use(cors({
     credentials: true,
-    origin: "https://airbnb-clone-mern-main.vercel.app", 
-    
+    origin:["https://airbnb-clone-mern-main.vercel.app"],
+    methods:["POST", "GET"],
+    allowedHeaders: ['Content-Type', 'Authorization', 'token'],
 }));
 
 
@@ -263,7 +265,7 @@ app.get('/bookings',async (req,res)=>{
     res.json(await Booking.find({user:userData.id}).populate('place'))
 })
 
-app.listen(4000, () => {
-    console.log('Express server is running on port 4000');
+app.listen(PORT, () => {
+    console.log(`Express server is running on port ${PORT}`);
 });
 
