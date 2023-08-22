@@ -26,8 +26,8 @@ app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
 header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Origin: POST,GET,OPTIONS,PUT,DELETE');
-header('Access-Control-Allow-Origin: Content-Type,X-Auth-Token, Origin, Authentication');
+header('Access-Control-Allow-Methods: POST,GET,OPTIONS,PUT,DELETE');
+header('Access-Control-Allow-Headers: Content-Type, X-Auth-Token, Origin, Authentication');
 
 app.use(cors({
     origin: 'https://airbnb-clone-mern-f.vercel.app', 
