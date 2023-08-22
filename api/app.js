@@ -1,4 +1,4 @@
-const cors = require('cors');
+
 const express = require('express');
 const bcrypt = require('bcryptjs'); 
 const jwt = require('jsonwebtoken');
@@ -26,13 +26,6 @@ app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
-
-app.use(cors({
-    credentials: true,
-    origin: "https://airbnb-clone-mern-main.vercel.app", 
-    methods: ['GET','POST','DELETE','UPDATE','PUT'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'token'],
-}));
 
 // Your code
 if (process.env.NODE_ENV === "production") {
