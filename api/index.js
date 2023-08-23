@@ -108,7 +108,8 @@ app.post('/login', async (req, res) => {
                     return res.status(500).json({ error: 'Error occurred during login' });
                 }
                 console.log("Token generated:", token);
-                res.cookie('token', token).json(userDoc);
+                userDoc.token = token
+                res.send(userDoc);
             }
         );
     } catch (error) {
