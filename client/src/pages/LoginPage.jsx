@@ -22,7 +22,13 @@ try {
   }); 
       if (userInfo.data && !userInfo.data.error) {
         setUser(userInfo.data);
-        Cookies.set('token', userInfo.data.token, { expires: 7 });
+
+        localStorage.setItem("token", userInfo.data.token)
+        // Cookies.set('token', userInfo.data.token, { expires: 7 });
+
+        axios.defaults.headers = {
+          userauthtoken:localStorage.getItem("token")
+        }
         alert("Login successful.");
         setRedirect(true);
         

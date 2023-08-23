@@ -43,7 +43,7 @@ mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopol
 
 function getUserDataFromReq(req) {
     return new Promise((resolve, reject) => {
-        jwt.verify(req.cookies.token, jwtSecret, {}, async (err, userData) => {
+        jwt.verify(req.headers.userauthtoken, jwtSecret, {}, async (err, userData) => {
             if (err) {
                 console.error("Error verifying token:", err);
                 reject(err);
