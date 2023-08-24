@@ -8,8 +8,15 @@ const PlacesPage = () => {
     const [places, setPlaces] = useState([])
 
   useEffect(()=>{
-    axios.get('/user-places').then(({data})=>{
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    axios.get('/user-places', {
+      headers: {
+        Authorization: `${userData.token}`,
+        "Content-Type": "application/json",
+      },
+    }).then(({data})=>{
     setPlaces(data); 
+    console.log(data)
     }); 
   },[]);
 
@@ -49,9 +56,6 @@ const PlacesPage = () => {
               {place.description}
              </p>
           </div>
-
-
-
         </div>
       </Link>
           ))}

@@ -26,13 +26,16 @@ const BookingWidget = ({place}) => {
 
     async function bookThisPlace() {
       try {
+        const userData = JSON.parse(localStorage.getItem("userData"))
+
         const response = await axios.post('/bookings', {
           checkIn,checkOut,numberOfGuests,
           name,phone,place: place._id,
           price: numberOfNights * place.price,
-        }, {
-          withCredentials: true, // Added this line to send credentials
-        });
+        },{headers :{
+          Authorization: `${userData.token}`, 
+          'Content-Type': 'application/json',
+        }});
     
         const bookingId = response.data._id;
         setRedirect(`/account/bookings/${bookingId}`);

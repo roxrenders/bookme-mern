@@ -1,19 +1,20 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-import { useParams,Link } from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react'
+import { useParams,Link, Navigate } from 'react-router-dom'
 import BookingWidget from './BookingWidget'
 import PlaceGallery from './PlaceGallery'
 import AddressLink from '../AddressLink'
 
+import { UserContext } from '../userContext';
 
 const PlacePage = () => {
     const {id} = useParams()
     const [place,setPlace] = useState(null);
-
+    const { user } = useContext(UserContext);
     useEffect(() => {
+      const userData = JSON.parse(localStorage.getItem("userData"));
     if (!id) {
       return;
-
     }
     axios.get(`/places/${id}`).then(response => {
       setPlace(response.data);
@@ -21,6 +22,9 @@ const PlacePage = () => {
   }, [id]);
 
   if (!place) return '';
+  if (!user) {
+    return <Navigate to="/login" />;
+  }
 
 
   return (

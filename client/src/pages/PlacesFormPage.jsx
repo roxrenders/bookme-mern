@@ -21,10 +21,16 @@ const PlacesFormPage = () => {
   const [redirect, setRedirect] = useState(false);
   
   useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem("userData"));
     if (!id) {
       return;
     }
-    axios.get('/places/' + id).then(response => {
+    axios.get('/places/' + id, {
+          headers: {
+            Authorization: `${userData.token}`,
+            "Content-Type": "application/json",
+          },
+        }).then(response => {
       const { data } = response;
       setTitle(data.title);
       setAddress(data.address);
@@ -59,6 +65,8 @@ const PlacesFormPage = () => {
  
   async function savePlace(ev) {
     ev.preventDefault();
+    const userData = JSON.parse(localStorage.getItem("userData"))
+
     const placeData = {
       title, address, addedPhotos,
       description, perks, extraInfo,
@@ -68,11 +76,17 @@ const PlacesFormPage = () => {
       // update
       await axios.put('/places', {
         id, ...placeData
-      });
+      },{headers :{
+        Authorization: `${userData.token}`, 
+        'Content-Type': 'application/json',
+      }});
       setRedirect(true);
     } else {
       // new place
-      await axios.post('/places', placeData);
+      await axios.post('/places', placeData,{headers :{
+        Authorization: `${userData.token}`, 
+        'Content-Type': 'application/json',
+      }});
       setRedirect(true);
     }
 

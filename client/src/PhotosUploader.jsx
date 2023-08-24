@@ -5,16 +5,33 @@ export const PhotosUploader = ({ addedPhotos, onChange }) => {
   const [photoLink, setPhotoLink] = useState("");
 
   async function addPhotoByLink(ev) {
+    const userData = JSON.parse(localStorage.getItem("userData"));
     ev.preventDefault();
-    const { data: imageUrl } = await axios.post("/upload-by-link", {
-      link: photoLink,
-    });
-
-    const relativeImageUrl = imageUrl.replace("https://airbnb-clone-mern-server.vercel.app", "");
-    onChange((prev) => [...prev, relativeImageUrl]);
-    setPhotoLink("");
-    console.log("Photos added by link:", addedPhotos);
+  
+    try {
+      const { data } = await axios.post("/upload-by-link", {
+        link: photoLink,
+      }, {
+        headers: {
+          Authorization: `${userData.token}`,
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      if (data.imageUrl) {
+        const relativeImageUrl = data.imageUrl.replace("http://localhost:4000/uploads", "");
+        onChange((prev) => [...prev, relativeImageUrl]);
+      } else {
+        console.error("Image URL not found in response:", data);
+      }
+  
+      setPhotoLink("");
+      console.log("Photos added by link:", addedPhotos);
+    } catch (error) {
+      console.error("Error uploading photo by link:", error);
+    }
   }
+  
 
   function uploadPhoto(ev) {
     const files = ev.target.files;
@@ -31,7 +48,7 @@ export const PhotosUploader = ({ addedPhotos, onChange }) => {
         console.log(response.data);
 
         const relativeImageUrls = filenames.map((filename) =>
-          filename.replace("https://airbnb-clone-mern-server.vercel.app", "")
+          filename.replace("http://localhost:4000", "")
         );
 
         onChange([...addedPhotos, ...relativeImageUrls]);
@@ -73,7 +90,7 @@ export const PhotosUploader = ({ addedPhotos, onChange }) => {
               <div className="flex relative" key={link}>
                 <img
                   className="rounded-2xl h-30 w-40 object-cover"
-                  src={`https://airbnb-clone-mern-server.vercel.app/uploads/${link}`}
+                  src={`http://localhost:4000/uploads/${link}`}
                   alt={`Uploaded ${link}`}
                 />
                 <button onClick={ev => removePhoto(ev,link)} className="cursor-pointer absolute bottom-1 right-1 text-white bg-black bg-opacity-50 rounded-2xl py-2 px-3">

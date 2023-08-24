@@ -16,9 +16,13 @@ const ProfilePage = () => {
   }
 
   async function logout(){
-    await axios.post('/logout');
-    setRedirect('/');
-    setUser(null); 
+    try {
+      await axios.post('/logout');
+      localStorage.removeItem("userData");
+      setUser(null); 
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
   }
 
   if (!ready) {

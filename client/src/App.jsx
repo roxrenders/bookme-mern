@@ -12,12 +12,16 @@ import PlacePage from './pages/PlacePage';
 import BookingPage from './pages/BookingPage';
 import BookingsPage from './pages/BookingsPage';
 import { UserContextProvider } from './userContext';
+import { useState } from 'react';
 
 
 function App() {
 
-  axios.defaults.baseURL = import.meta.env.VITE_BACKEND_API_URL;
-  axios.defaults.withCredentials = true;
+  // axios.defaults.baseURL = import.meta.env.VITE_BACKEND_API_URL;
+  //axios.defaults.withCredentials = true;
+  axios.defaults.baseURL = "http://localhost:4000";
+
+  // const [userAuth,setUserAuth] = useState(false);
 
   return (
     <UserContextProvider>
