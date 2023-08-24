@@ -94,7 +94,7 @@ app.post("/login", async (req, res) => {
   try {
     console.log("Finding user with email:", email);
     const userDoc = await User.findOne({ email });
-    console.log("Found user:", userDoc);
+    
     if (!userDoc) {
       return res.status(404).json({ error: "User not found" });
     }
@@ -186,7 +186,8 @@ app.post("/upload", photoMiddleware.array("photos", 100), async (req, res) => {
 app.post("/places", async (req, res) => {
 
   const userData = await getUserDataFromReq(req);
-  console.log("userData", userData) 
+  
+  
   
   const {
     title,address,description,addedPhotos,
@@ -201,7 +202,7 @@ app.post("/places", async (req, res) => {
   }
 
   const placeDoc = await Place.create(newPlaceData);
-  console.log(placeDoc);
+
   res.json(placeDoc);
  
 });
@@ -248,7 +249,7 @@ app.post("/bookings", async (req, res) => {
   try {
     console.log(req.headers)
     const userData = await getUserDataFromReq(req);
-    console.log(userData) 
+    
 
     const { name, phone, checkIn, checkOut, numberOfGuest, place, price } =
       req.body;

@@ -16,7 +16,7 @@ const PlacesPage = () => {
       },
     }).then(({data})=>{
     setPlaces(data); 
-    console.log(data)
+   
     }); 
   },[]);
 
