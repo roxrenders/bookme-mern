@@ -27,7 +27,7 @@ app.use("/uploads", express.static(__dirname + "/uploads"));
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://bookme-mern-front.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization", "token"],
   })
