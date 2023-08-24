@@ -15,11 +15,11 @@ import { UserContextProvider } from './userContext';
 import { useState } from 'react';
 
 
-function App() {
+https://bookme-mern-server.vercel.appfunction App() {
 
   // axios.defaults.baseURL = import.meta.env.VITE_BACKEND_API_URL;
   //axios.defaults.withCredentials = true;
-  axios.defaults.baseURL = "http://localhost:4000";
+  axios.defaults.baseURL = "https://bookme-mern-server.vercel.app";
 
   // const [userAuth,setUserAuth] = useState(false);
 
