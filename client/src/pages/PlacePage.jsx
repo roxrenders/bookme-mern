@@ -39,7 +39,7 @@ const PlacePage = () => {
       <div className='my-4 font-semibold gap-8 grid grid-cols-1 md:grid-cols-[2fr_1fr]'>
         <div >
           <div className='border-y-2 rounded-lg p-2 my-4' >
-          <h1 className='font-bold text-gray-200 text-sm sm:text-lg '>Description - </h1>
+          <h1 className='font-bold text-black text-sm sm:text-lg '>Description - </h1>
           <p className='text-gray-700 text-xs sm:text-lg'>{place.description}</p>
           </div  >
           <div className='text-sm sm:text-lg ml-2'>
