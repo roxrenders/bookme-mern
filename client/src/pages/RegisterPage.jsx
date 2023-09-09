@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Navigate, redirect } from "react-router-dom";
+import { Link, useNavigate, redirect } from "react-router-dom";
 import axios from "axios";
 
 const RegisterPage = () => {
