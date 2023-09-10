@@ -161,7 +161,7 @@ app.post("/upload-by-link", async (req, res) => {
 
 const photoMiddleware = multer({ dest: __dirname + "/uploads/" });
 
-app.post("/upload", photoMiddleware.array("photos", 100), async (req, res) => {
+app.post("/upload", photoMiddleware.array("photos", 1000), async (req, res) => {
   try {
     const uploadedFiles = [];
     for (let i = 0; i < req.files.length; i++) {
