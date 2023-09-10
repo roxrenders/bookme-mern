@@ -175,13 +175,14 @@ app.post("/upload", photoMiddleware.array("photos", 100), async (req, res) => {
       const filenameOnly = sanitizedPath.split("/").pop(); // Get only the filename
       uploadedFiles.push(filenameOnly);
     }
-    console.log(uploadedFiles);
+    console.log("Uploaded files:", uploadedFiles);
     res.json(uploadedFiles);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "An error occurred during file upload" });
+    console.error("File upload error:", error);
+    res.status(500).json({ error: "An error occurred during file upload", detailedError: error.message });
   }
 });
+
 
 app.post("/places", async (req, res) => {
 
