@@ -19,7 +19,7 @@ export const PhotosUploader = ({ addedPhotos, onChange }) => {
       });
   
       if (data.imageUrl) {
-        const relativeImageUrl = data.imageUrl.replace("https://bookme-mern-server.vercel.app/uploads", "");
+        const relativeImageUrl = data.imageUrl.replace("https://bookme-server1.onrender.com/uploads", "");
         onChange((prev) => [...prev, relativeImageUrl]);
       } else {
         console.error("Image URL not found in response:", data);
@@ -90,7 +90,7 @@ export const PhotosUploader = ({ addedPhotos, onChange }) => {
               <div className="flex relative" key={link}>
                 <img
                   className="rounded-2xl h-30 w-40 object-cover"
-                  src={`https://bookme-mern-server.vercel.app/uploads/${link}`}
+                  src={`https://bookme-server1.onrender.com/uploads/${link}`}
                   alt={`Uploaded ${link}`}
                 />
                 <button onClick={ev => removePhoto(ev,link)} className="cursor-pointer absolute bottom-1 right-1 text-white bg-black bg-opacity-50 rounded-2xl py-2 px-3">
