@@ -19,7 +19,7 @@ function App() {
 
   // axios.defaults.baseURL = import.meta.env.VITE_BACKEND_API_URL;
   //axios.defaults.withCredentials = true;
-  axios.defaults.baseURL = "https://bookme-mern-server.vercel.app";
+  axios.defaults.baseURL = "https://bookme-server1.onrender.com";
 
   // const [userAuth,setUserAuth] = useState(false);
 

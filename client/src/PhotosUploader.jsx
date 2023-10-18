@@ -48,7 +48,7 @@ export const PhotosUploader = ({ addedPhotos, onChange }) => {
         console.log(response.data);
 
         const relativeImageUrls = filenames.map((filename) =>
-          filename.replace("https://bookme-mern-server.vercel.app", "")
+          filename.replace("https://bookme-server1.onrender.com", "")
         );
 
         onChange([...addedPhotos, ...relativeImageUrls]);
